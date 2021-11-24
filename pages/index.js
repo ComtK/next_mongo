@@ -16,6 +16,11 @@ export default function Home({ isConnected }) {
 						<a>movies.js</a>
 					</Link>
 				</h1>
+				<h1 className="title">
+					<Link href={'/join'}>
+						<a>join.js</a>
+					</Link>
+				</h1>
 
 				<h1 className="title">
 					Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connectToDatabase } from '../lib/mongodb';
 
-const Movies = ({ movies }) => {
+const Top = ({ movies }) => {
 	return (
 		<div>
-			<h1>Top 20 Movies of All Time</h1>
+			<h1>Top 1000 Movies of All Time</h1>
 			<p>
 				<small>(According to Metacritic)</small>
 			</p>
@@ -21,13 +21,11 @@ const Movies = ({ movies }) => {
 	);
 };
 
-export default Movies;
+export default Top;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
 	const { db } = await connectToDatabase();
-
-	const movies = await db.collection('users').find({}).sort({ metacritic: -1 }).limit(20).toArray();
-
+	const movies = await db.collection('users').find({}).sort({ metacritic: -1 }).limit(1000).toArray();
 	return {
 		props: {
 			movies: JSON.parse(JSON.stringify(movies)),
